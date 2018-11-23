@@ -1,0 +1,22 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<!-- <div *ngFor="let item of lists; let i = index;">
+  <input type="checkbox" id="{{item.id}}" />
+  <label for="{{item.id}}">{{item.name}}</label>
+</div> -->
+
+<div>
+  <input id="allChecked" type="checkbox" [(ngModel)]="allChecked" (click)="checkAll(allChecked)" />
+  <label for="allChecked"> Check all</label>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label formArrayName="lists" *ngFor="let list of form.controls.lists.controls; let i = index">
+      <input type="checkbox" [formControlName]="i" (change)="chicking($event)">
+      {{lists[i].name}}
+    </label>
+
+    <button>submit</button>
+  </form>
+</div>
